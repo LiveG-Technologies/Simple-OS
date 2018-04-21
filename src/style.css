@@ -1,0 +1,178 @@
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/MaterialIcons-Regular.ttf") format("truetype");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+}
+
+html {
+    height: 100%;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+    user-select: none;
+    outline: none;
+}
+
+body {
+    cursor: default;
+}
+
+body.login {
+    text-align: center;
+    background: linear-gradient(130deg, #0fd8cb 0%, #26cde0 50%, #39beef 75%);
+    margin-top: 0;
+    overflow-y: hidden;
+}
+
+#sread {
+    position: absolute;
+    z-index: 99999;
+    bottom: 60px;
+    left: 40px;
+    width: 500px;
+    font-size: 20px;
+    height: 110px;
+    overflow-y: auto;
+    display: none;
+}
+
+.login.card {
+    position: relative;
+    width: 400px;
+    left: calc(50vw - 200px);
+    text-align: left;
+}
+
+.login.logo {
+    height: 80px;
+    margin-top: 100px;
+}
+
+.infobar {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    top: 5px;
+    left: 10px;
+    text-align: left;
+    font-size: 20px;
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+}
+
+.transparent.black {
+    color: black;
+}
+
+.transparent.white {
+    color: white;
+}
+
+.corner {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    transition: bottom 1s;
+}
+
+.corner.left {
+    left: 20px;
+    right: unset;
+}
+
+.corner.right {
+    left: unset;
+    right: 20px;
+}
+
+.corner.top {
+    top: 20px;
+    bottom: unset;
+}
+
+.corner.bottom {
+    top: unset;
+    bottom: 20px;
+}
+
+.corner.small {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transition: bottom 1s;
+}
+
+.corner.left.small {
+    left: 10px;
+    right: unset;
+}
+
+.corner.right.small {
+    left: unset;
+    right: 10px;
+}
+
+.corner.top.small {
+    top: 10px;
+    bottom: unset;
+}
+
+.corner.bottom.small {
+    top: unset;
+    bottom: 10px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: -100px;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 0;
+    transition: bottom 1s;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.linker {
+    cursor: pointer;
+}
+
+.subcard {
+    width: 10vw;
+    display: inline-block;
+    margin-top: -20px;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+.subcard:hover {
+    color: #4286f4;
+}
+
+.subcard:active {
+    color: #3675db;
+}
