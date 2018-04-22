@@ -57,6 +57,25 @@ body.login {
     display: none;
 }
 
+.dimback {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    display: none;
+}
+
+.alert.card {
+    position: absolute;
+    width: 400px;
+    top: calc(25vw - 100px);
+    left: calc(50vw - 200px);
+    text-align: left;
+}
+
 .login.card {
     position: relative;
     width: 400px;

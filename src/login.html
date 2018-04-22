@@ -8,15 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="lib/jquery.js"></script>
+        <script src="lib/q.js"></script>
+        <script src="lib/LargeLocalStorage.min.js"></script>
     </head>
     <body class="login">
         <div class="transparent black infobar">
-            <span class="borderable readable-text" tabindex="0" id="time" data-readable="The time is 15:00.">15:00</span>
+            <span class="borderable readable-text" tabindex="0" id="time" data-readable="The time is 15:00">15:00</span>
         </div>
         <img src="favicon.png" class="login logo" />
         <div class="login card">
             <div class="card-content">
-                <span class="card-title">Login</span>
+                <span class="card-title borderable readable-text" tabindex="0" id="logintitle" data-readable="Login: Title of card">Login</span>
                 <form>
                     <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
@@ -31,7 +33,7 @@
                 </form>
             </div>
             <div class="card-action right-align">
-                <a class="borderable readable-button borderable" tabindex="0" id="login" data-readable="Login" href="#">Login</a>
+                <a class="borderable readable-button borderable" tabindex="0" id="loginbutton" data-readable="Login" href="javascript:login();">Login</a>
             </div>
         </div>
         <div class="corner" id="bottomButtons">
@@ -46,9 +48,18 @@
         <div class="card grey darken-1 white-text left-align" id="sread">
             <div class="card-content" id="sreadContent"></div>
         </div>
+        <div class="dimback">
+            <div class="card alert">
+                <div class="card-content borderable readable-text" tabindex="0" id="alertokinfo" data-readable="Alert content."></div>
+                <div class="card-action right-align">
+                    <a class="borderable readable-button borderable" tabindex="0" id="alertok" data-readable="OK" href="javascript:alertClose();">OK</a>
+                </div>
+            </div>
+        </div>
         <style id="sreadStyle"></style>
         <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="login.js"></script>
+        <script type="text/javascript" src="addons.js"></script>
         <script type="text/javascript" src="sread.js"></script>
+        <script type="text/javascript" src="login.js"></script>
     </body>
 </html>

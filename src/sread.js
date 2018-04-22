@@ -3,10 +3,12 @@ var sread = {
 
     speak: function(text) {
         window.speechSynthesis.cancel();
-        var message = new SpeechSynthesisUtterance(text);
-        message.rate = 5;
-        window.speechSynthesis.speak(message);
-        $("#sreadContent").text(text);
+        setTimeout(function () {
+            var message = new SpeechSynthesisUtterance(text);
+            message.rate = 5;
+            window.speechSynthesis.speak(message);
+            $("#sreadContent").text(text);
+        }, 250);
     },
 
     cssState: function(state) {
@@ -135,12 +137,14 @@ var sread = {
         if (state) {
             $("#sread").css("display", "unset");
             sread.cssState(true);
+            sread.speak("SimpleReader is on");
         } else {
             $("#sread").css("display", "none");
             sread.cssState(false);
-        }
+            sread.speak("SimpleReader is off");
 
-        $("#sreadContent").text("");
+            $("#sreadContent").text("");
+        }
     },
 
     switchState: function() {
@@ -153,3 +157,13 @@ var sread = {
 }
 
 sread.init();
+
+document.body.onkeydown = function(e) {
+    if (e.keyCode == 123) {
+        e.preventDefault();
+    }
+
+    if (e.keyCode == 123 && e.ctrlKey) {
+        sread.switchState();
+    }
+};
