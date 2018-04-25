@@ -48,9 +48,9 @@ function menu(page) {
                     <a class="subcard"></a>
                     <a class="subcard"></a>
                     <a class="subcard readable-button borderable" tabindex="0" id="help" data-readable="Help"><i class="medium material-icons">help</i><br>Help</a>
-
-                    if (sread.reading) { sread.speak("Help selected"); }
                 `);
+
+                if (sread.reading) { sread.speak("Help selected"); }
             } else if (page == 3) {
                 $("#bottomCardContent").html(`
                     <a class="subcard"></a>
@@ -60,7 +60,7 @@ function menu(page) {
                     <a class="subcard"></a>
                     <a class="subcard"></a>
                     <a class="subcard"></a>
-                    <a class="subcard"></a>
+                    <a class="subcard readable-button borderable" tabindex="0" id="invertcolours" data-readable="High Contrast" href="javascript:hcon.switchState();"><i class="medium material-icons">invert_colors</i><br>High Contrast</a>
                     <a class="subcard readable-button borderable" tabindex="0" id="simplereader" data-readable="SimpleReader" href="javascript:sread.switchState();"><i class="medium material-icons">accessibility</i><br>SimpleReader</a>
                 `);
 
