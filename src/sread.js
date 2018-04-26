@@ -1,11 +1,25 @@
+function getClosestWord(str, pos) {
+    str = String(str);
+    pos = Number(pos) >>> 0;
+
+    var left = str.slice(0, pos + 1).search(/\S+$/),
+        right = str.slice(pos).search(/\s/);
+
+    if (right < 0) {
+        return str.slice(left);
+    }
+    return str.slice(left, right + pos);
+}
+
 var sread = {
     reading: false,
+    blackout: false,
 
-    speak: function(text) {
+    speak: function(text, slow = false) {
         window.speechSynthesis.cancel();
         setTimeout(function () {
             var message = new SpeechSynthesisUtterance(text);
-            message.rate = 5;
+            if (!slow) { message.rate = 5; }
             window.speechSynthesis.speak(message);
             $("#sreadContent").text(text);
         }, 250);
@@ -123,12 +137,24 @@ var sread = {
         $("input").keydown(function (event) {
             if (sread.reading) {
                 if (event.which == 8) {
-                    sread.speak("Backspace");
+                    sread.speak("Backspace. " + getClosestWord($(document.activeElement).val().substring(0, $(document.activeElement).val().length - 1), $(document.activeElement).val().length));
                 } else if (event.which == 46) {
                     sread.speak("Delete");
                 }
             }
-        })
+        });
+    },
+
+    reRead: function(slow = false) {
+        if ($(document.activeElement).text() == "") {
+            sread.speak($(document.activeElement).val(), slow);
+        } else {
+            sread.speak($(document.activeElement).text(), slow);
+        }
+    },
+
+    editWord: function() {
+        sread.speak(getClosestWord($(document.activeElement).val(), $(document.activeElement).caret()));
     },
 
     changeState: function(state) {
@@ -141,6 +167,7 @@ var sread = {
         } else {
             $("#sread").css("display", "none");
             sread.cssState(false);
+            sread.changeBlackout(false, true);
             sread.speak("SimpleReader is off");
 
             $("#sreadContent").text("");
@@ -152,6 +179,26 @@ var sread = {
             sread.changeState(false);
         } else {
             sread.changeState(true);
+        }
+    },
+
+    changeBlackout: function(state, silent = false) {
+        sread.blackout = state;
+
+        if (state) {
+            $("#sreadBlackout").css("display", "unset");
+            if (!silent) { sread.speak("Blackout is on"); }
+        } else {
+            $("#sreadBlackout").css("display", "none");
+            if (!silent) { sread.speak("Blackout is off"); }
+        }
+    },
+
+    switchBlackout: function() {
+        if (sread.blackout) {
+            sread.changeBlackout(false);
+        } else {
+            sread.changeBlackout(true);
         }
     }
 }
@@ -165,5 +212,25 @@ document.body.onkeydown = function(e) {
 
     if (e.keyCode == 123 && e.ctrlKey) {
         sread.switchState();
+    } else if (e.keyCode == 123 && e.altKey) {
+        if (sread.reading) {
+            sread.switchBlackout();
+        }
+    } else if (e.ctrlKey && e.altKey) {
+        if (sread.reading) {
+            if (e.shiftKey) {
+                sread.reRead(true);
+            } else {
+                sread.reRead();
+            }
+        }
     }
 };
+
+$("input").keydown(function(e) {
+    if (e.keyCode == 37 || e.keyCode == 39) {
+        if (sread.reading) {
+            sread.editWord();
+        }
+    }
+});

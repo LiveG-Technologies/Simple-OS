@@ -1,6 +1,10 @@
-var storage = new LargeLocalStorage({size: 1024 * 1024, name: "account"})
+var storage = new LargeLocalStorage({size: 1024 * 1024, name: "account"});
 
 var menuPage = 0;
+
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
 
 function menu(page) {
     if (page == menuPage) {
@@ -61,7 +65,7 @@ function menu(page) {
                     <a class="subcard"></a>
                     <a class="subcard"></a>
                     <a class="subcard readable-button borderable" tabindex="0" id="invertcolours" data-readable="High Contrast" href="javascript:hcon.switchState();"><i class="medium material-icons">invert_colors</i><br>High Contrast</a>
-                    <a class="subcard readable-button borderable" tabindex="0" id="simplereader" data-readable="SimpleReader" href="javascript:sread.switchState();"><i class="medium material-icons">accessibility</i><br>SimpleReader</a>
+                    <a class="subcard readable-button borderable" tabindex="0" id="simplereader" data-readable="SimpleReader" href="javascript:sread.switchState();"><i class="medium material-icons">record_voice_over</i><br>SimpleReader</a>
                 `);
 
                 if (sread.reading) { sread.speak("Accessibility options selected"); }
@@ -90,3 +94,9 @@ function login() {
         }
     });
 }
+
+setInterval(function() {
+    var date = new Date();
+    $("#time").html(date.getHours() + ":" + date.getMinutes());
+    $("#time").attr("data-readable", "The time is " + date.getHours() + ":" + date.getMinutes());
+}, 100);
