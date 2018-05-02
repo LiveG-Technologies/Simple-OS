@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple OS</title>
+        <link rel="shortcut icon" href="favicon.png">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script src="lib/q.js"></script>
+        <script src="lib/LargeLocalStorage.min.js"></script>
+        <script src="lib/jqueryCaret/jquery.caret.js"></script>
+    </head>
+    <body class="desktop">
+        <div class="black infobar">
+            <span class="borderable readable-text" tabindex="0" id="time" data-readable="The time is not found">--:--</span>
+        </div>
+        <div id="appbar">
+            <img src="favicon.png" class="appbaritem logo readable-button borderable" tabindex="0" id="sosmenu" data-readable="Simple OS Menu" />
+        </div>
+        <div class="dimback">
+            <div class="card alert">
+                <div class="card-content borderable readable-text" tabindex="0" id="alertokinfo" data-readable="Alert content."></div>
+                <div class="card-action right-align">
+                    <a class="borderable readable-button borderable invert-black" tabindex="0" id="alertok" data-readable="OK" href="javascript:alertClose();">OK</a>
+                </div>
+            </div>
+        </div>
+        <div class="card grey darken-1 white-text left-align" id="sread">
+            <div class="card-content" id="sreadContent"></div>
+        </div>
+        <div id="sreadBlackout"></div>
+        <style id="sreadStyle"></style>
+        <style id="hconStyle"></style>
+        <script src="js/materialize.min.js"></script>
+        <script src="addons.js"></script>
+        <script src="sread.js"></script>
+        <script src="hcon.js"></script>
+        <script src="desktop.js"></script>
+    </body>
+</html>

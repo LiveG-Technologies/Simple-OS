@@ -53,6 +53,13 @@ body.login {
     overflow-y: hidden;
 }
 
+body.desktop {
+    background: linear-gradient(130deg, #0fd8cb 0%, #26cde0 50%, #39beef 75%);
+    color: black;
+    margin-top: 0;
+    overflow-y: hidden;
+}
+
 #sread {
     position: absolute;
     z-index: 99999;
@@ -110,6 +117,10 @@ body.login {
 .login.logo {
     height: 80px;
     margin-top: 100px;
+}
+
+.appbaritem.logo {
+    height: 60px;
 }
 
 .infobar {
@@ -223,4 +234,12 @@ body.login {
 
 .subcard:active {
     color: #3675db;
+}
+
+#appbar {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
 }

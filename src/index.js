@@ -12,7 +12,7 @@ function boot() {
 $("#indexLoader").hide();
 
 setTimeout(function() {
-    if (!pause) { boot(); }
+    if (!pause) {boot();}
 }, 2000);
 
 document.body.onkeydown = function(e) {

@@ -12,13 +12,13 @@ function menu(page) {
         $("#bottomCard").css("bottom", "-100px");
         menuPage = 0;
 
-        if (sread.reading) { sread.speak("Bottom card closed."); }
+        if (sread.reading) {sread.speak("Bottom card closed.");}
     } else {
         if (page == 0) {
             $("#bottomButtons").css("bottom", "20px");
             $("#bottomCard").css("bottom", "-100px");
 
-            if (sread.reading) { sread.speak("Bottom card closed."); }
+            if (sread.reading) {sread.speak("Bottom card closed");}
             
             setTimeout(function() {
                 $("#bottomCardContent").html("");
@@ -40,7 +40,7 @@ function menu(page) {
                     <a class="subcard readable-button borderable" tabindex="0" id="shutdown" data-readable="Shutdown"><i class="medium material-icons">power_settings_new</i><br>Shutdown</a>
                 `);
 
-                if (sread.reading) { sread.speak("Power actions selected"); }
+                if (sread.reading) {sread.speak("Power actions selected");}
             } else if (page == 2) {
                 $("#bottomCardContent").html(`
                     <a class="subcard"></a>
@@ -54,7 +54,7 @@ function menu(page) {
                     <a class="subcard readable-button borderable" tabindex="0" id="help" data-readable="Help"><i class="medium material-icons">help</i><br>Help</a>
                 `);
 
-                if (sread.reading) { sread.speak("Help selected"); }
+                if (sread.reading) {sread.speak("Help selected");}
             } else if (page == 3) {
                 $("#bottomCardContent").html(`
                     <a class="subcard"></a>
@@ -68,7 +68,7 @@ function menu(page) {
                     <a class="subcard readable-button borderable" tabindex="0" id="simplereader" data-readable="SimpleReader" href="javascript:sread.switchState();"><i class="medium material-icons">record_voice_over</i><br>SimpleReader</a>
                 `);
 
-                if (sread.reading) { sread.speak("Accessibility options selected"); }
+                if (sread.reading) {sread.speak("Accessibility options selected");}
             }
 
             $("#bottomButtons").css("bottom", "120px");
@@ -85,12 +85,16 @@ function login() {
         console.log(content);
         if (content[$("#username").val()] !== undefined) {
             if (content[$("#username").val()]["password"] == $("#password").val()) {
-                alert("Login not fully implemented yet.");
+                window.location.href = "desktop.html?account=" + $("#username").val();
             } else {
                 alert("Password is incorrect.");
             }
         } else {
-            alert("Account does not exist.");
+            if ($("#username").val() == "") {
+                alert("Account not inputted.");
+            } else {
+                alert("Account does not exist.");
+            }
         }
     });
 }
@@ -100,3 +104,5 @@ setInterval(function() {
     $("#time").html(date.getHours() + ":" + date.getMinutes());
     $("#time").attr("data-readable", "The time is " + date.getHours() + ":" + date.getMinutes());
 }, 100);
+
+menu(0);
