@@ -101,8 +101,14 @@ function login() {
 
 setInterval(function() {
     var date = new Date();
-    $("#time").html(date.getHours() + ":" + date.getMinutes());
-    $("#time").attr("data-readable", "The time is " + date.getHours() + ":" + date.getMinutes());
+
+    if (date.getMinutes() < 10) {
+        $("#time").html(date.getHours() + ":0" + date.getMinutes());
+        $("#time").attr("data-readable", "The time is " + date.getHours() + ":0" + date.getMinutes());
+    } else {
+        $("#time").html(date.getHours() + ":" + date.getMinutes());
+        $("#time").attr("data-readable", "The time is " + date.getHours() + ":" + date.getMinutes());
+    }
 }, 100);
 
 menu(0);
