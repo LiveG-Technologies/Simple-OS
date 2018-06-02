@@ -8,6 +8,11 @@ var hcon = {
                     background: none!important;
                     background-color: black!important;
                 }
+
+                .infobar {
+                    background-color: black!important;
+                    color: white!important;
+                }
             
                 .card {
                     background-color: white!important;
